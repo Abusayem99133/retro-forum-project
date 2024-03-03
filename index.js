@@ -13,9 +13,9 @@ const displayPost = postApi =>{
     postApi.forEach(post => {
         // console.log(post)
         const postCard = document.createElement('div');
-        postCard.classList = `flex justify-center items-center mt-12 gap-5`
+        postCard.classList = `flex justify-center bg-gray-100 rounded-xl  items-center mt-12 gap-5`
         postCard.innerHTML = `
-        <div  class="flex border-2 p-5 rounded-xl  gap-8">
+        <div  class="flex  p-5 rounded-xl  gap-8">
                         <div id="" class="bg-white h-20 w-24 rounded-lg text-end">
                         <p class="rounded-full p-  with1%]
                         bg-[#15fc07]"></p>
