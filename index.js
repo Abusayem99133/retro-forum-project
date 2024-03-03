@@ -11,23 +11,30 @@ const displayPost = postApi =>{
     const postContainer = document.getElementById('music-area');
     // console.log(postApi)
     postApi.forEach(post => {
-        // console.log(post)
+        console.log(post)
         const postCard = document.createElement('div');
         postCard.classList = `flex justify-center bg-gray-100 rounded-xl  items-center mt-12 gap-5`
         postCard.innerHTML = `
         <div  class="flex  p-5 rounded-xl  gap-8">
-                        <div id="" class="bg-white h-20 w-24 rounded-lg text-end">
-                        <p class="rounded-full p-  with1%]
-                        bg-[#15fc07]"></p>
-                        <img class= ""src="${post.image}" alt="">
-                        </div>
+                        
 
+
+
+
+
+   
+</div>
+<div class="avatar online">
+  <div class="w-24 rounded-full">
+    <img src="${post.image}"/>
+  </div>
+</div>
                         <div class=" ">
                             <div class="flex gap-5">
                                 <h3 class="font-medium text-[#59596d]">${post.category}</h3>
                                 <h3 class="font-medium text-[#59596d]">Author: ${post.author.name}</h3>
                             </div>
-                            <h2 class="font-bold text-[#12132d] text-[20px]">${post.title}
+                            <h2 id="title" class="total-title font-bold text-[#12132d] text-[20px]">${post.title}
                             </h2>
                             <p class="text-[16px] text-[#717181]">${post.description}</p>
                             <hr class="border-dashed mt-5 mb-5 bg-gray-500">
@@ -46,7 +53,7 @@ const displayPost = postApi =>{
                                         <p id="">${post.posted_time}min</p>
                                     </div>
                                     <div class="bg-[#10b981] rounded-full p-3">
-                                        <i class="text-white fa-regular fa-envelope-open"></i>
+                                        <i onclick="newBtn()" class="text-white fa-regular fa-envelope-open"></i>
                                     </div>
                                 </div>
                             </div>
@@ -57,19 +64,18 @@ const displayPost = postApi =>{
     
 }
 
-// Function to fetch data from the API
 async function fetchData() {
     const response = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
     const data = await response.json();
     return data;
   }
   
-  // Function to append data to individual div
+  
   async function latestData() {
     const data = await fetchData();
     const container = document.getElementById('latest-post');
     data.forEach(post => {
-        console.log(post)
+        // console.log(post)
         const div = document.createElement('div');
         div.className = 'card w-96 bg-base-100 shadow-xl ';
         div.innerHTML = `
@@ -94,8 +100,23 @@ async function fetchData() {
         container.appendChild(div);
     });
   }
-  
-  // Call the function to append data
+
+  const totalTitle = document.querySelectorAll('total-title');
+const newBtn = ()=>{
+const siteBar = document.getElementById('title');
+siteBar.innerText = 
+
+
+
+
+
+   console.log(siteText)
+}
+
+
+
+
+ 
   latestData();
-// latestPost()
+
 loadApiSite();
