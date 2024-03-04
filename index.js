@@ -1,5 +1,5 @@
-const loadApiSite = async () =>{
-    const res =await fetch ('https://openapi.programming-hero.com/api/retro-forum/posts');
+const loadApiSite = async () => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
 
     const data = await res.json();
     const postApi = data.posts;
@@ -7,28 +7,21 @@ const loadApiSite = async () =>{
     displayPost(postApi)
 
 }
-const displayPost = postApi =>{
+const displayPost = postApi => {
     const postContainer = document.getElementById('music-area');
     // console.log(postApi)
     postApi.forEach(post => {
-        console.log(post)
+        // console.log(post)
         const postCard = document.createElement('div');
         postCard.classList = `flex justify-center bg-gray-100 rounded-xl  items-center mt-12 gap-5`
         postCard.innerHTML = `
-        <div  class="flex  p-5 rounded-xl  gap-8">
-                        
-
-
-
-
-
-   
-</div>
-<div class="avatar online">
-  <div class="w-24 rounded-full">
-    <img src="${post.image}"/>
-  </div>
-</div>
+        <div  class="flex  p-5 rounded-xl  gap-8">               
+        </div>
+        <div class="avatar online">
+         <div class="w-24 rounded-full">
+           <img src="${post.image}"/>
+                        </div>
+                        </div>
                         <div class=" ">
                             <div class="flex gap-5">
                                 <h3 class="font-medium text-[#59596d]">${post.category}</h3>
@@ -52,7 +45,7 @@ const displayPost = postApi =>{
                                         <i class="fa-regular fa-clock"></i>
                                         <p id="">${post.posted_time}min</p>
                                     </div>
-                                    <div class="bg-[#10b981] rounded-full p-3">
+                                    <div id="button-area" class="bg-[#10b981] rounded-full p-3">
                                         <i onclick="newBtn()" class="text-white fa-regular fa-envelope-open"></i>
                                     </div>
                                 </div>
@@ -61,17 +54,20 @@ const displayPost = postApi =>{
         `
         postContainer.appendChild(postCard)
     });
-    
+
 }
 
-async function fetchData() {
+const fetchData = async() =>{
     const response = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
     const data = await response.json();
+    // console.log(data)
     return data;
-  }
-  
-  
-  async function latestData() {
+}
+
+
+
+
+const latestData = async() =>{
     const data = await fetchData();
     const container = document.getElementById('latest-post');
     data.forEach(post => {
@@ -80,10 +76,10 @@ async function fetchData() {
         div.className = 'card w-96 bg-base-100 shadow-xl ';
         div.innerHTML = `
     <figure class="px-10 pt-10">
-        <img src="${post.cover_image}" alt="Cover Image" class="rounded-xl" />
+        <img src="${post.cover_image}" alt="" class="rounded-xl" />
     </figure>
     <div class="card-body">
-    <p class="text-[#717181] text-[16px] mt-6"><i class=" fa-regular fa-calendar"></i>${post.author.posted_date ? post.author.posted_date: 'No publish date'}</p>
+    <p class="text-[#717181] text-[16px] mt-6"><i class=" fa-regular fa-calendar"></i>${post.author.posted_date ? post.author.posted_date : 'No publish date'}</p>
         <h1 class="font-bold text-lg">${post.title}</h1>
         <p>${post.description}</p>
         <div class="flex gap-x-4">
@@ -99,24 +95,16 @@ async function fetchData() {
   `;
         container.appendChild(div);
     });
-  }
-
-  const totalTitle = document.querySelectorAll('total-title');
-const newBtn = ()=>{
-const siteBar = document.getElementById('title');
-siteBar.innerText = 
-
-
-
-
-
-   console.log(siteText)
 }
 
 
 
 
- 
-  latestData();
+
+latestData();
 
 loadApiSite();
+
+
+
+
